@@ -1,0 +1,85 @@
+/* ============================================================
+   GLOBAL STYLES - CSS Custom Properties & Reset
+   ============================================================ */
+
+/* CSS Custom Properties (переменные) */
+:root {
+    --t-text-font: 'Montserrat', sans-serif;
+    --t-headline-font: 'Cormorant Garamond', serif;
+    --color-gold: #b8973a;
+    --color-dark: #3d2b1a;
+    --color-light: #f0ebe4;
+    --color-cream: #f0e6cc;
+    --color-dark-bg: #1a0a0a;
+}
+
+/* Импорт шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap');
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--t-text-font);
+    color: var(--color-dark);
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+/* Удаление дефолтных стилей */
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Общие анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Утилиты */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}

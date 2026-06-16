@@ -982,6 +982,10 @@
     min-height: 450px;
     padding: 30px 15px;
   }
+  .kz-card-block__bg-image {
+    width: clamp(560px, 165vw, 720px);
+    opacity: 0.13;
+  }
   .kz-card-block__card {
     width: 90%;
     padding: 35px 25px;
@@ -993,6 +997,9 @@
   .kz-card-block {
     min-height: 400px;
     padding: 20px 15px;
+  }
+  .kz-card-block__bg-image {
+    width: clamp(540px, 175vw, 680px);
   }
   .kz-card-block__card {
     width: 95%;

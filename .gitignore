@@ -6,6 +6,7 @@ wedding_block2_with_count.html
 wedding_invite_block5.html
 wedding_invite_hero3.html
 wedding_music_player2.html
+old_assets/wedding_block.html
 
 # Python
 __pycache__/
@@ -26,4 +27,8 @@ db.sqlite3
 # Distribution
 dist/
 build/
-*.egg-info/
+*.egg-info/ 
+
+# don't used files 
+./old_assets/
+PROJECT_OVERVIEW.md

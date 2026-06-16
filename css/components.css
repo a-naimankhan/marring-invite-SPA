@@ -124,7 +124,7 @@
   flex-direction: column;
   align-items: center;
   padding: 50px 0 0;
-  position: relative;
+  position: relative; 
 }
 
 .ih__card {
@@ -140,27 +140,52 @@
   align-items: center;
   text-align: center;
   position: relative;
+  overflow: hidden;
   animation: fadeIn .9s ease both;
+}
+
+.ih__card > :not(.ih__sides) {
+  position: relative;
+  z-index: 2;
 }
 
 .ih__sides {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  width: calc(100% + 0px);
-  pointer-events: none;
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  pointer-events: none;
+  z-index: 1;
 }
+
 .ih__side-img {
-  width: 72px;
+  width: clamp(74px, 22vw, 118px);
+  height: 100%;
   object-fit: contain;
+  object-position: center;
   opacity: 0.85;
+  flex-shrink: 0;
 }
-.ih__side-img--right { transform: scaleX(-1); }
+
+.ih__side-img--right {
+  transform: scaleX(-1);
+}
+
+@media (min-width: 768px) {
+  .ih__side-img {
+    width: 96px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ih__side-img {
+    width: 118px;
+  }
+}
 
 .ih__eyebrow {
   font-family: 'Montserrat', sans-serif;

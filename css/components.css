@@ -163,28 +163,18 @@
 }
 
 .ih__side-img {
-  width: clamp(74px, 22vw, 118px);
   height: 100%;
-  object-fit: contain;
+  width: clamp(150px, 42vw, 210px);
+  max-width: none;
+  display: block;
+  object-fit: fill;
   object-position: center;
-  opacity: 0.85;
+  opacity: 0.5;
   flex-shrink: 0;
 }
 
 .ih__side-img--right {
   transform: scaleX(-1);
-}
-
-@media (min-width: 768px) {
-  .ih__side-img {
-    width: 96px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .ih__side-img {
-    width: 118px;
-  }
 }
 
 .ih__eyebrow {

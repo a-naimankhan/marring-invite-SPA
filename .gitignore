@@ -29,6 +29,8 @@ dist/
 build/
 *.egg-info/ 
 
+
 # don't used files 
 ./old_assets/
 PROJECT_OVERVIEW.md
+

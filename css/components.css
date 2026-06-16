@@ -879,8 +879,8 @@
    ============================================================ */
 
 @keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .kz-card-block {
@@ -902,14 +902,15 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 150%;
-  height: 150%;
-  object-fit: cover;
+  width: clamp(360px, 92vw, 680px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
   object-position: center;
   z-index: 1;
   transform: translate(-50%, -50%);
   animation: spinSlow 20s linear infinite;
-  opacity: 0.15;
+  opacity: 0.12;
 }
 
 .kz-card-block__card {

@@ -1,8 +1,29 @@
-location-block4.html  
-calendar3.html 
-ayan_tomiris_cover1.html 
+location-block4.html
+calendar3.html
+ayan_tomiris_cover1.html
 wedding_block2_circles_outside_last.html
-wedding_block2_with_count.html 
-wedding_invite_block5.html 
-wedding_invite_hero3.html 
+wedding_block2_with_count.html
+wedding_invite_block5.html
+wedding_invite_hero3.html
 wedding_music_player2.html
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+.venv/
+
+# VSCode
+.vscode/
+
+# SQLite database
+/server/weddingInvitation/db.sqlite3
+db.sqlite3
+
+# Distribution
+dist/
+build/
+*.egg-info/

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     buildCalendar();
     initAudioPlayer();
+    initAutoScroll();
 });
 
 function buildCalendar() {
@@ -43,4 +44,59 @@ function seekAudio(event) {
     if (typeof handleAudioSeek === 'function') {
         handleAudioSeek(event);
     }
+}
+
+function initAutoScroll() {
+    const root = document.documentElement;
+    const speed = 0.18;
+    const startDelay = 1800;
+    const resumeDelay = 5500;
+    let enabled = false;
+    let pausedUntil = Date.now() + startDelay;
+    let lastFrame = null;
+
+    function pauseAutoScroll(delay) {
+        pausedUntil = Date.now() + delay;
+    }
+
+    function isFormActive() {
+        const active = document.activeElement;
+        return active && ['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(active.tagName);
+    }
+
+    function tick(timestamp) {
+        if (lastFrame === null) lastFrame = timestamp;
+        const elapsed = Math.min(40, timestamp - lastFrame);
+        lastFrame = timestamp;
+
+        const maxScroll = root.scrollHeight - window.innerHeight;
+        const atBottom = window.scrollY >= maxScroll - 2;
+
+        if (!atBottom && enabled && Date.now() >= pausedUntil && !isFormActive()) {
+            window.scrollBy(0, speed * elapsed);
+        }
+
+        requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('load', function() {
+        enabled = true;
+        requestAnimationFrame(tick);
+    });
+
+    ['wheel', 'touchstart', 'pointerdown', 'keydown'].forEach(function(eventName) {
+        window.addEventListener(eventName, function() {
+            pauseAutoScroll(resumeDelay);
+        }, { passive: true });
+    });
+
+    document.addEventListener('focusin', function(event) {
+        if (event.target.matches('input, textarea, select, button')) {
+            pauseAutoScroll(60 * 60 * 1000);
+        }
+    });
+
+    document.addEventListener('focusout', function() {
+        pauseAutoScroll(resumeDelay);
+    });
 }

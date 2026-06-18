@@ -79,3 +79,25 @@ function showSuccess(message) {
     toast.textContent = message;
     toast.classList.add('show', 'rsvp-form__toast--ok');
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const radios = document.querySelectorAll('input[name="attend"]');
+    const countInput = document.getElementById('wi2-count');
+
+    radios.forEach(function (radio) {
+        radio.addEventListener('change', function () {
+            if (!countInput) return;
+
+            if (this.value === 'Ия , Жұбайыммен келемін') {
+                countInput.value = 2;
+            } else if (this.value === 'Өкінішке орай, келе алмаймын') {
+                countInput.value = 0;
+            } else {
+                countInput.value = 1;
+            }
+
+            countInput.classList.remove('wi2__input--error');
+        });
+    });
+});

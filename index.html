@@ -25,7 +25,7 @@
             
             <p class="music-section__hint">Әуенді қосу үшін, батырманы басыңыз</p>
             <button class="music-section__play" type="button" onclick="toggleAudio()" aria-label="Музыканы қосу немесе тоқтату">
-                <i class="ti ti-player-play-filled" aria-hidden="true"></i>
+                <span class="music-section__play-icon" aria-hidden="true"></span>
             </button>
             <div class="music-section__curve" aria-hidden="true"></div>
 
@@ -42,6 +42,32 @@
                 салтанатты ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
             </p>
             <div class="hand-doodle" aria-hidden="true"></div>
+        </section>
+
+        <section id="countdown" class="countdown-section section-paper" aria-labelledby="countdown-title">
+            <p class="countdown-section__eyebrow">Тойға дейін қалды</p>
+            <h2 id="countdown-title" class="section-title">Күн санап жақындап келеміз</h2>
+            <div class="countdown-section__timer" aria-label="Тойға дейін қалған уақыт">
+                <div class="countdown-section__unit">
+                    <span class="countdown-section__value" id="hp-days">—</span>
+                    <span class="countdown-section__label">күн</span>
+                </div>
+                <span class="countdown-section__sep">:</span>
+                <div class="countdown-section__unit">
+                    <span class="countdown-section__value" id="hp-hours">—</span>
+                    <span class="countdown-section__label">сағат</span>
+                </div>
+                <span class="countdown-section__sep">:</span>
+                <div class="countdown-section__unit">
+                    <span class="countdown-section__value" id="hp-mins">—</span>
+                    <span class="countdown-section__label">минут</span>
+                </div>
+                <span class="countdown-section__sep">:</span>
+                <div class="countdown-section__unit">
+                    <span class="countdown-section__value" id="hp-secs">—</span>
+                    <span class="countdown-section__label">секунд</span>
+                </div>
+            </div>
         </section>
 
         <section id="calendar" class="calendar-section section-paper" aria-labelledby="calendar-title">
@@ -130,6 +156,7 @@
     </main>
 
     <script src="js/main.js"></script>
+    <script src="js/timer.js"></script>
     <script src="js/player.js"></script>
     <script src="js/form.js"></script>
 </body>

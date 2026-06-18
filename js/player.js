@@ -51,7 +51,7 @@ function updatePlayButton() {
     const player = document.querySelector('[data-player]');
     if (!button) return;
 
-    button.innerHTML = '<i class="ti ti-player-play-filled" aria-hidden="true"></i>';
+    button.innerHTML = '<span class="music-section__play-icon" aria-hidden="true"></span>';
     button.setAttribute('aria-label', isPlaying ? 'Музыканы тоқтату' : 'Музыканы қосу');
 
     if (player) {

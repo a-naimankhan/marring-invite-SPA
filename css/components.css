@@ -251,8 +251,14 @@
     opacity: 0.78;
 }
 
-.music-section__play i {
-    transform: translateX(2px);
+.music-section__play-icon {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: 5px;
+    border-top: 17px solid transparent;
+    border-bottom: 17px solid transparent;
+    border-left: 27px solid #050302;
 }
 
 .music-section__curve {
@@ -290,6 +296,72 @@
     max-width: 330px;
     font-size: 16px;
     line-height: 1.45;
+}
+
+.countdown-section {
+    padding-top: 30px;
+    padding-bottom: 34px;
+    text-align: center;
+}
+
+.countdown-section__eyebrow {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brown);
+}
+
+.countdown-section__timer {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: start;
+    gap: 6px;
+    width: 100%;
+    max-width: 350px;
+    margin: 24px auto 0;
+    padding: 18px 12px 16px;
+    border: 1px solid rgba(107, 29, 15, 0.12);
+    border-radius: 18px;
+    background: rgba(255, 250, 241, 0.58);
+    box-shadow: 0 12px 28px rgba(73, 38, 21, 0.08);
+}
+
+.countdown-section__unit {
+    min-width: 0;
+    display: grid;
+    justify-items: center;
+    gap: 6px;
+}
+
+.countdown-section__value {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 9vw, 42px);
+    line-height: 1;
+    font-weight: 700;
+    color: var(--brown);
+    transition: transform 0.18s ease;
+}
+
+.countdown-section__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.countdown-section__sep {
+    padding-top: 2px;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 7vw, 36px);
+    line-height: 1;
+    color: rgba(107, 29, 15, 0.28);
 }
 
 .calendar-section {
@@ -727,6 +799,12 @@
 
     .record-player {
         width: 238px;
+    }
+
+    .countdown-section__timer {
+        gap: 4px;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
     .calendar-card {

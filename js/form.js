@@ -1,76 +1,81 @@
-/* ============================================================
-   FORM.JS - Логика RSVP формы со счётчиком гостей
-   ============================================================ */
-
-/**
- * Изменить количество гостей
- */
 function changeCount(delta) {
-    var inp = document.getElementById('wi2-count');
-    var val = parseInt(inp.value) || 1;
-    val = Math.min(20, Math.max(1, val + delta));
-    inp.value = val;
-    inp.classList.remove('wi2__input--error');
+    const input = document.getElementById('wi2-count');
+    if (!input) return;
+
+    const current = parseInt(input.value, 10) || 1;
+    input.value = Math.min(20, Math.max(1, current + delta));
+    input.classList.remove('wi2__input--error');
 }
 
-/**
- * Валидация количества гостей
- */
-function validateCount(el) {
-    var raw = el.value;
-    var parsed = parseInt(raw, 10);
-    if (isNaN(parsed) || parsed !== +raw || parsed < 1) {
-        el.classList.add('wi2__input--error');
-    } else {
-        el.classList.remove('wi2__input--error');
-        el.value = Math.min(20, parsed);
+function validateCount(input) {
+    const parsed = parseInt(input.value, 10);
+    if (Number.isNaN(parsed) || parsed < 1 || parsed > 20) {
+        input.classList.add('wi2__input--error');
+        return;
     }
+
+    input.value = Math.min(20, parsed);
+    input.classList.remove('wi2__input--error');
 }
 
-/**
- * Отправка формы RSVP
- */
-function submitForm() {
-    var toast = document.getElementById('wi2-toast');
-    toast.className = 'wi2__toast';
+function submitForm(event) {
+    if (event) event.preventDefault();
 
-    var name = document.getElementById('wi2-name').value.trim();
-    var attend = document.querySelector('input[name="attend"]:checked');
-    var countEl = document.getElementById('wi2-count');
-    var countRaw = countEl.value;
-    var numberOfPeople = parseInt(countRaw, 10);
+    const toast = document.getElementById('wi2-toast');
+    const nameInput = document.getElementById('wi2-name');
+    const countInput = document.getElementById('wi2-count');
+    const attend = document.querySelector('input[name="attend"]:checked');
+
+    if (!toast || !nameInput || !countInput) return;
+
+    resetToast(toast);
+
+    const name = nameInput.value.trim();
+    const numberOfPeople = parseInt(countInput.value, 10);
 
     if (!name) {
-        showError('⚠ Аты-жөніңізді жазыңыз');
-        return;
-    }
-    if (!attend) {
-        showError('⚠ Қатысу мүмкіндігін таңдаңыз');
-        return;
-    }
-    if (isNaN(numberOfPeople) || numberOfPeople < 1 || String(numberOfPeople) !== countRaw.trim()) {
-        countEl.classList.add('wi2__input--error');
-        showError('⚠ Адам санын дұрыс енгізіңіз (бүтін сан)');
+        showError('Аты-жөніңізді жазыңыз');
+        nameInput.focus();
         return;
     }
 
-    var payload = {
-        name: name,
+    if (!attend) {
+        showError('Қатысу жауабын таңдаңыз');
+        return;
+    }
+
+    if (Number.isNaN(numberOfPeople) || numberOfPeople < 1 || numberOfPeople > 20) {
+        countInput.classList.add('wi2__input--error');
+        showError('Қонақ санын 1-ден 20-ға дейін енгізіңіз');
+        return;
+    }
+
+    const payload = {
+        name,
         attend: attend.value,
-        numberOfPeople: numberOfPeople
+        numberOfPeople,
+        submittedAt: new Date().toISOString()
     };
 
-    console.log('RSVP payload:', JSON.stringify(payload));
-
-    toast.textContent = '✓ Жауап жіберілді! ' + name + ' — ' + numberOfPeople + ' адам';
-    toast.classList.add('show', 'wi2__toast--ok');
+    console.log('RSVP payload:', payload);
+    showSuccess(`${name}, жауабыңыз сақталды`);
 }
 
-/**
- * Показать ошибку
- */
-function showError(msg) {
-    var toast = document.getElementById('wi2-toast');
-    toast.textContent = msg;
-    toast.classList.add('show', 'wi2__toast--err');
+function resetToast(toast) {
+    toast.className = 'rsvp-form__toast';
+    toast.textContent = '';
+}
+
+function showError(message) {
+    const toast = document.getElementById('wi2-toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show', 'rsvp-form__toast--err');
+}
+
+function showSuccess(message) {
+    const toast = document.getElementById('wi2-toast');
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add('show', 'rsvp-form__toast--ok');
 }

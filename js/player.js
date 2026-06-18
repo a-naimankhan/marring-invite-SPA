@@ -1,88 +1,87 @@
-/* ============================================================
-   PLAYER.JS - Логика музыкального плеера
-   ============================================================ */
-
 let audioElement = null;
 let isPlaying = false;
 
-/**
- * Инициализация плеера
- */
 function initAudioPlayer() {
-    // Будет добавлено при интеграции блока wedding_music_player2.html
-    console.log('🎵 Плеер инициализирован');
+    audioElement = document.getElementById('wedding-audio');
+    if (!audioElement) return;
+
+    audioElement.addEventListener('play', function() {
+        isPlaying = true;
+        updatePlayButton();
+    });
+
+    audioElement.addEventListener('pause', function() {
+        isPlaying = false;
+        updatePlayButton();
+    });
+
+    audioElement.addEventListener('timeupdate', updateProgress);
+    audioElement.addEventListener('loadedmetadata', updateProgress);
 }
 
-/**
- * Обработка нажатия на кнопку play/pause
- */
 function toggleAudio() {
+    if (!audioElement) {
+        initAudioPlayer();
+    }
+
     if (!audioElement) return;
-    
+
     if (isPlaying) {
         audioElement.pause();
-        isPlaying = false;
-    } else {
-        audioElement.play();
-        isPlaying = true;
+        return;
     }
-    
-    updatePlayButton();
+
+    audioElement.play().catch(function() {
+        showPlayerMessage('Музыка файлы кейін қосылады');
+    });
 }
 
-/**
- * Обработка seek (перемотка трека)
- */
 function handleAudioSeek(event) {
-    if (!audioElement) return;
-    
+    if (!audioElement || !audioElement.duration) return;
+
     const progressBar = event.currentTarget;
     const rect = progressBar.getBoundingClientRect();
     const x = event.clientX - rect.left;
-    const percentage = x / rect.width;
-    
+    const percentage = Math.max(0, Math.min(1, x / rect.width));
     audioElement.currentTime = percentage * audioElement.duration;
 }
 
-/**
- * Обновление отображения кнопки play/pause
- */
 function updatePlayButton() {
-    // Будет реализовано при интеграции
+    const button = document.querySelector('.music-section__play');
+    const player = document.querySelector('[data-player]');
+    if (!button) return;
+
+    button.innerHTML = '<i class="ti ti-player-play-filled" aria-hidden="true"></i>';
+    button.setAttribute('aria-label', isPlaying ? 'Музыканы тоқтату' : 'Музыканы қосу');
+
+    if (player) {
+        player.classList.toggle('is-playing', isPlaying);
+    }
 }
 
-/**
- * Обновление прогресс-бара
- */
 function updateProgress() {
-    if (!audioElement) return;
-    
     const fill = document.getElementById('mp-fill');
     const current = document.getElementById('mp-cur');
     const duration = document.getElementById('mp-dur');
-    
-    if (fill) {
-        const percent = (audioElement.currentTime / audioElement.duration) * 100;
-        fill.style.width = percent + '%';
-    }
-    
-    if (current) {
-        current.textContent = formatTime(audioElement.currentTime);
-    }
-    
-    if (duration && audioElement.duration) {
-        duration.textContent = formatTime(audioElement.duration);
-    }
+
+    if (!audioElement || !fill) return;
+
+    const percent = audioElement.duration ? (audioElement.currentTime / audioElement.duration) * 100 : 0;
+    fill.style.width = percent + '%';
+
+    if (current) current.textContent = formatTime(audioElement.currentTime);
+    if (duration) duration.textContent = formatTime(audioElement.duration);
 }
 
-/**
- * Форматирование времени (mm:ss)
- */
+function showPlayerMessage(message) {
+    const hint = document.querySelector('.music-section__hint');
+    if (hint) hint.textContent = message;
+}
+
 function formatTime(seconds) {
     if (!seconds || isNaN(seconds)) return '0:00';
-    
+
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
-    
     return `${mins}:${secs.toString().padStart(2, '0')}`;
 }

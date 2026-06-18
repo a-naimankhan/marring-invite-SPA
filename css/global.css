@@ -1,27 +1,23 @@
-/* ============================================================
-   GLOBAL STYLES - CSS Custom Properties & Reset
-   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
 
-/* CSS Custom Properties (переменные) */
 :root {
-    --t-text-font: 'Montserrat', sans-serif;
-    --t-headline-font: 'Cormorant Garamond', serif;
-    --color-gold: #b8973a;
-    --color-dark: #3d2b1a;
-    --color-light: #f0ebe4;
-    --color-cream: #f0e6cc;
-    --color-dark-bg: #1a0a0a;
+    --font-sans: 'Montserrat', Arial, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-hand: 'Caveat', cursive;
+    --paper: #f6efe4;
+    --paper-deep: #eadfce;
+    --ink: #1d140f;
+    --muted: #746158;
+    --brown: #6b1d0f;
+    --brown-2: #8b3526;
+    --red: #b7382b;
+    --line: rgba(42, 25, 17, 0.28);
+    --shadow: 0 18px 40px rgba(65, 36, 20, 0.14);
 }
 
-/* Импорт шрифтов */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap');
-
-/* Reset & Base */
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -30,13 +26,14 @@ html {
 }
 
 body {
-    font-family: var(--t-text-font);
-    color: var(--color-dark);
-    background-color: #fff;
-    line-height: 1.6;
+    margin: 0;
+    min-width: 320px;
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background: #e9dfd1;
+    line-height: 1.5;
 }
 
-/* Удаление дефолтных стилей */
 button,
 input,
 textarea,
@@ -44,42 +41,27 @@ select {
     font: inherit;
 }
 
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
 img {
-    max-width: 100%;
-    height: auto;
     display: block;
+    max-width: 100%;
 }
 
-/* Общие анимации */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+button {
+    cursor: pointer;
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Утилиты */
-.container {
-    max-width: 1200px;
+.invite-shell {
+    width: min(100%, 430px);
     margin: 0 auto;
-    padding: 0 20px;
-}
-
-.text-center {
-    text-align: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 24% 8%, rgba(255, 255, 255, 0.65), transparent 22%),
+        linear-gradient(180deg, #fbf6ee 0%, var(--paper) 45%, #f7f0e6 100%);
+    box-shadow: 0 0 32px rgba(30, 18, 12, 0.18);
 }

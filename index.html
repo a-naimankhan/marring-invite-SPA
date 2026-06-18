@@ -3,491 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Аян және Томирис — үйлену той шақыруы / Приглашение на свадьбу Аяна и Томирис">
-    <meta name="theme-color" content="#1a0a0a">
-    
-    <title>Аян & Томирис — Үйлену той</title>
-    
-    <!-- Стили -->
+    <meta name="description" content="Аян мен Томирис үйлену тойына шақыру">
+    <meta name="theme-color" content="#f7f0e6">
+    <title>Аян + Томирис</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/components.css">
-    
-    <!-- Иконки Tabler (для плеера и других элементов) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/tabler-icons.min.css">
 </head>
 <body>
-    
-    <!-- ============================================================
-         РАЗДЕЛ 1: ОБЛОЖКА / ТИТУЛ
-         Файл: ayan_tomiris_cover1.html (.at-cover)
-         ============================================================ -->
-    <section id="cover" class="at-cover">
-        <div class="at-cover__ornament-top">
-            <svg viewBox="0 0 200 100" width="200" height="100" preserveAspectRatio="xMidYMid meet">
-                <path d="M10,50 Q50,20 100,50 T190,50" stroke="rgba(210,180,120,0.3)" stroke-width="1" fill="none"/>
-            </svg>
-        </div>
-
-        <p class="at-cover__eyebrow">Сіздерді қайта сәлемдеуге</p>
-        
-        <div class="at-cover__deco">
-            <span class="at-cover__deco-line"></span>
-            <span class="at-cover__deco-diamond"></span>
-            <span class="at-cover__deco-line"></span>
-        </div>
-
-        <h1 class="at-cover__title">
-            <em>Аян</em> & <em>Томирис</em>
-        </h1>
-
-        <p class="at-cover__sub">ҮЙЛЕНУ ТОЙЫ</p>
-
-        <div class="at-cover__deco2">
-            <span class="at-cover__deco-line"></span>
-            <span class="at-cover__deco-diamond"></span>
-            <span class="at-cover__deco-line"></span>
-        </div>
-
-        <div class="at-cover__ornament-bot">
-            <svg viewBox="0 0 200 100" width="200" height="100" preserveAspectRatio="xMidYMid meet">
-                <path d="M10,50 Q50,20 100,50 T190,50" stroke="rgba(210,180,120,0.3)" stroke-width="1" fill="none"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         РАЗДЕЛ 2: МУЗЫКАЛЬНЫЙ ПЛЕЕР
-         Файл: wedding_music_player2.html (.mp)
-         ============================================================ -->
-    <section id="player" class="mp">
-        <div class="mp__top">
-            <p class="mp__title">ҮЙЛЕНУ ТОЙҒА ШАҚЫРУ!</p>
-            <p class="mp__date">21 · 08 · 2026</p>
-        </div>
-
-        <div class="mp__line"></div>
-
-        <div class="mp__ornaments">
-            <img class="mp__orn mp__orn--left" src="assets/ornaments/kazakh-ornament-circle.png" alt="">
-            <img class="mp__orn" src="assets/ornaments/kazakh-ornament-circle.png" alt="">
-        </div>
-
-        <div class="mp__chevron">
-            <i class="ti ti-chevron-down" aria-hidden="true"></i>
-            <i class="ti ti-chevron-down" aria-hidden="true"></i>
-        </div>
-
-        <p class="mp__hint">Әуенді қосу үшін, батырманы басыңыз</p>
-
-        <div class="mp__card">
-            <div class="mp__bars" id="mp-bars">
-                <div class="mp__bar"></div>
-                <div class="mp__bar"></div>
-                <div class="mp__bar"></div>
-                <div class="mp__bar"></div>
-                <div class="mp__bar"></div>
-                <div class="mp__bar"></div>
-                <div class="mp__bar"></div>
+    <main class="invite-shell" data-app="wedding-invite">
+        <section id="cover" class="cover-section" aria-labelledby="cover-title">
+            <img class="cover-section__image" src="assets/images/coverage-block.png" alt="Аян мен Томиристің бала кездегі суреті">
+            <div class="cover-section__bottom">
+                <p id="cover-title" class="cover-section__caption">Жоғары жылжытыңыз!</p>
+                <i class="ti ti-chevron-down cover-section__arrow" aria-hidden="true"></i>
             </div>
+        </section>
 
-            <div class="mp__progress-wrap">
-                <div class="mp__progress" id="mp-progress" onclick="seekAudio(event)">
-                    <div class="mp__progress-fill" id="mp-fill"></div>
-                </div>
-                <div class="mp__times">
-                    <span id="mp-cur">0:00</span>
-                    <span id="mp-dur">0:00</span>
-                </div>
-            </div>
+        <section id="music" class="music-section section-paper" aria-labelledby="music-title">
+            <img class="music-section__image" src="assets/images/gromophone.png" alt="Музыкалық ойнатқыш">
+            
+            <p class="music-section__hint">Әуенді қосу үшін, батырманы басыңыз</p>
+            <button class="music-section__play" type="button" onclick="toggleAudio()" aria-label="Музыканы қосу немесе тоқтату">
+                <i class="ti ti-player-play-filled" aria-hidden="true"></i>
+            </button>
+            <div class="music-section__curve" aria-hidden="true"></div>
 
-            <div class="mp__controls">
-                <button class="mp__btn" title="Предыдущий трек">
-                    <i class="ti ti-skip-back"></i>
-                </button>
-                <button class="mp__btn mp__btn--play" onclick="toggleAudio()" title="Воспроизвести">
-                    <i class="ti ti-player-play"></i>
-                </button>
-                <button class="mp__btn" title="Следующий трек">
-                    <i class="ti ti-skip-forward"></i>
-                </button>
-            </div>
-        </div>
+            <audio id="wedding-audio" preload="metadata">
+                <source src="assets/music/wedding-song.mp3" type="audio/mpeg">
+            </audio>
+        </section>
 
-        <img class="mp__orn2" src="assets/ornaments/kazakh-ornament-divider-removebg-preview.png" alt="">
-
-        <p class="mp__closing">
-           poka hz che napisat
-        </p>
-
-        <!-- Аудиоэлемент (скрытый) -->
-        <audio id="wedding-audio" style="display:none;">
-            <source src="assets/music/wedding-song.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает HTML5 аудио.
-        </audio>
-    </section>
-
-    <!-- ============================================================
-         РАЗДЕЛ 3: ГЕРОИЧЕСКИЙ БЛОК ПРИГЛАШЕНИЯ
-         Файл: wedding_invite_hero3.html (.ih)
-         ============================================================ -->
-    <section id="invite-hero" class="ih">
-        <div class="ih__card">
-            <!-- орнаменты по бокам -->
-            <div class="ih__sides">
-                <img class="ih__side-img" src="assets/ornaments/ornament-left.png" alt="">
-                <img class="ih__side-img ih__side-img--right" src="assets/ornaments/ornament-left.png" alt="">
-            </div>
-
-            <p class="ih__eyebrow">Сіздерді<br>ұлымыз бен келінімізді</p>
-
-            <div class="ih__line"></div>
-
-            <div class="ih__names">Аян</div>
-            <div class="ih__пен">мен</div>
-            <div class="ih__names">Томирис</div>
-
-            <div class="ih__line"></div>
-
-            <p class="ih__body">
-                ҮЙЛЕНУ ТОЙЫНА АРНАЛҒАН<br>
-                АҚ ДАСТАРХАНЫМЫЗДЫҢ<br>
-                ҚАДІРЛІ ҚОНАҒЫ БОЛУҒА<br>
-                ШАҚЫРАМЫЗ!
+        <section id="message" class="message-section section-paper" aria-labelledby="message-title">
+            <div class="hand-doodle hand-doodle--small" aria-hidden="true"></div>
+            <h2 id="message-title" class="section-title">Құрметті қонақтар!</h2>
+            <p class="message-section__body">
+                Сіздерді балаларымыз Аян мен Томиристің үйлену тойына арналған
+                салтанатты ақ дастарханымыздың қадірлі қонағы болуға шақырамыз!
             </p>
+            <div class="hand-doodle" aria-hidden="true"></div>
+        </section>
 
-            <div class="ih__heart">
-                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M18 30s-13-8.5-13-17a7 7 0 0 1 13-3.6A7 7 0 0 1 31 13c0 8.5-13 17-13 17z" stroke="#7a5030" stroke-width="1.2" fill="none"/>
-                    <path d="M18 22c0 0-3-2-3-5a3 3 0 0 1 6 0c0 3-3 5-3 5z" stroke="#7a5030" stroke-width="0.8" fill="none"/>
-                </svg>
-            </div>
+        <section id="calendar" class="calendar-section section-paper" aria-labelledby="calendar-title">
+            <h2 id="calendar-title" class="section-title">Той салтанаты:</h2>
+            <article class="calendar-card" aria-label="Тамыз 2026 күнтізбесі">
+                <div class="calendar-card__pin" aria-hidden="true"></div>
+                <div class="calendar-card__note">18:00-де<br>Басталады</div>
+                <div class="calendar-card__month">ТАМЫЗ 2026</div>
+                <div class="calendar-card__grid" id="calendar-grid"></div>
+            </article>
+        </section>
 
-            <div class="ih__line"></div>
+        <section id="location" class="location-section section-paper" aria-labelledby="location-title">
+            <div class="hand-doodle" aria-hidden="true"></div>
+            <h2 id="location-title" class="section-title">Мекен-жайымыз:</h2>
+            <p class="location-section__address">
+                Талдықорған қаласы,<br>
+                Ынтымақ 14
+            </p>
+            <p class="location-section__venue">“AYA HALL”</p>
+            <p class="location-section__label">мейрамханасы</p>
 
-            <p class="ih__date">22 тамыз, 2026 жыл</p>
-            <p class="ih__time">15:00</p>
-
-        </div>
-
-        <!-- орнаменты снизу — конец страницы -->
-        <!-- <div class="ih__bottom">
-            <img class="ih__bot-img" src="assets/ornaments/ornament-bottom-left.png" alt="">
-            <img class="ih__bot-img ih__bot-img--right" src="assets/ornaments/ornament-bottom-right.png" alt="">
-        </div> -->
-    </section>
-
-    <!-- ============================================================
-         РАЗДЕЛ 4: ТАЙМЕР/КАЛЕНДАРЬ
-         Файл: calendar3.html (.hp-card)
-         ============================================================ -->
-    <section id="timer" class="hp-card">
-        <div class="hp-card__inner">
-            <p class="hp-card__eyebrow">ДЕЙІН ҚАЛДЫ</p>
-            <h2 class="hp-card__title">Үйлену тойына дейін</h2>
-            <p class="hp-card__subtitle">Аян және Томирис бірге болуының қуанышы</p>
-
-            <div class="hp-card__timer">
-                <div class="hp-card__timer-unit">
-                    <span class="hp-card__timer-value" id="hp-days">00</span>
-                    <span class="hp-card__timer-label">Күндер</span>
+            
+            <img src = "assets/images/aya-hall.png" alt = "aya-hall restaurant" />
+            
+            <!-- <div class="venue-card" aria-label="AYA Hall мейрамханасының иллюстрациясы">
+                <div class="venue-card__sign">AYA HALL RESTAURANT</div>
+                <!-- <div class="venue-card__windows" aria-hidden="true"> -->
+                    <!-- <span></span><span></span><span></span><span></span>
                 </div>
-                <span class="hp-card__timer-sep">:</span>
-                <div class="hp-card__timer-unit">
-                    <span class="hp-card__timer-value" id="hp-hours">00</span>
-                    <span class="hp-card__timer-label">Сағаттар</span>
-                </div>
-                <span class="hp-card__timer-sep">:</span>
-                <div class="hp-card__timer-unit">
-                    <span class="hp-card__timer-value" id="hp-mins">00</span>
-                    <span class="hp-card__timer-label">Минуттар</span>
-                </div>
-                <span class="hp-card__timer-sep">:</span>
-                <div class="hp-card__timer-unit">
-                    <span class="hp-card__timer-value" id="hp-secs">00</span>
-                    <span class="hp-card__timer-label">Секундтар</span>
-                </div>
-            </div>
+                <div class="venue-card__trees" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                </div> -->
+            </div> -->
 
-            <div class="hp-card__divider">
-                <span class="hp-card__divider-line"></span>
-                <svg class="hp-card__divider-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#b8973a">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                </svg>
-                <span class="hp-card__divider-line"></span>
-            </div>
+            <p class="location-section__map-text">
+                Мейрамхананы көру үшін 2GIS батырмасын басыңыз
+            </p>
+            <a class="map-button" href="https://go.2gis.com/KGMdq" target="_blank" rel="noopener" aria-label="2GIS картасын ашу">
+                <img src="assets/images/2gis.png" alt="2GIS">
+            </a>
+        </section>
 
-            <div class="hp-card__calendar">
-                <div class="hp-card__cal-header">
-                    <span class="hp-card__cal-month">Август 2026</span>
-                </div>
-                <div class="hp-card__cal-grid" id="hp-cal-grid"></div>
-                <div class="hp-card__cal-legend">
-                    <div class="hp-card__cal-legend-item">
-                        <span class="hp-card__cal-legend-dot hp-card__cal-legend-dot--today"></span>
-                        Бүгін
-                    </div>
-                    <div class="hp-card__cal-legend-item">
-                        <span class="hp-card__cal-legend-dot hp-card__cal-legend-dot--active"></span>
-                        Төй күні
-                    </div>
-                </div>
-            </div>
+        <section id="rsvp" class="rsvp-section section-paper" aria-labelledby="rsvp-title">
+            <div class="sparkles" aria-hidden="true"></div>
+            <h2 id="rsvp-title" class="section-title">Тойға қатысуыңызды растауыңызды сұраймыз!</h2>
 
-            <div class="hp-card__footer">
-                <p class="hp-card__date-display">21 августа 2026</p>
-                <p class="hp-card__date-note">Пятница · начало в 18:00</p>
-            </div>
-        </div>
-    </section>
+            <form class="rsvp-form" onsubmit="submitForm(event)" novalidate>
+                <label class="rsvp-form__label" for="wi2-name">
+                    Аты-жөніңізді жазыңыз:
+                    <span>(жұбайыңызбен келетін болсаңыз, есімдеріңізді бірге жазуды өтінеміз)</span>
+                </label>
+                <input class="rsvp-form__input" id="wi2-name" name="name" type="text" autocomplete="name">
 
-    <!-- ============================================================
-         РАЗДЕЛ 5: ЛОКАЦИЯ
-         Файл: location-block4.html (.kz-card-block)
-         ============================================================ -->
-    <section id="location" class="kz-card-block">
-        <img class="kz-card-block__bg-image" src="assets/ornaments/kazakh-ornament-circle.png" alt="Location background">  <!-- нужно добавить цикличное кружение в течение 20 с 360 градусов здесь именно этому имг  так здесь фон стоит желтый желтый нужно его тоже в более приятный как в других блоках цвета поставить на бэкграунд фон но не меняй цвет карточки на которой стоит надпись -->
-        
-        
-        <div class="kz-card-block__card">
-            <h3 class="kz-card-block__title">ТАЛДЫҚОРҒАН ҚАЛАСЫ</h3>
-            <div class="kz-card-block__subtitle">
-                <span class="kz-card-block__subtitle-line">ТАЛДЫҚОРҒАН ҚАЛАСЫ.</span>
-                <span class="kz-card-block__subtitle-line">"BIRDENKE-RESTARAUNT"</span>
-                <span class="kz-card-block__subtitle-line">МЕЙРАМХАНАСЫ.</span>
-            </div>
-            <div class="kz-card-block__icon-wrapper">
-                <a href="https://go.2gis.com/KGMdq" class="kz-card-block__icon-link" title="Посмотреть на карте">
-                    <img src="assets/images/2gis.png" alt="2GIS" style="width: 40px; height: 40px; object-fit: contain;">
-                </a>
-            </div>
-            <div class="kz-card-block__footer">
-                <a href="https://go.2gis.com/KGMdq" class="kz-card-block__footer-link">
-                    <span class="kz-card-block__footer-text">МЕЙРАМХАНЫ КӨРУ ҮШІН</span>
-                    <span class="kz-card-block__footer-text">2GIS батырмасын басыңыз</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         РАЗДЕЛ 6: ПРИГЛАШЕНИЕ (БЛОК 5)
-         Файл: wedding_invite_block5.html (.wi)
-         ============================================================ -->
-    <section id="invite-block" class="wi">
-        <div class="wi__card">
-            <svg class="wi__ornament" viewBox="0 0 280 50" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M10 25 Q30 5 50 25 Q70 45 90 25 Q110 5 130 25" stroke="rgba(120,90,60,0.35)" stroke-width="1" fill="none"/>
-                <path d="M150 25 Q170 5 190 25 Q210 45 230 25 Q250 5 270 25" stroke="rgba(120,90,60,0.35)" stroke-width="1" fill="none"/>
-                <circle cx="140" cy="25" r="5" stroke="rgba(120,90,60,0.4)" stroke-width="1" fill="none"/>
-                <circle cx="140" cy="25" r="2" fill="rgba(120,90,60,0.3)"/>
-                <line x1="0" y1="25" x2="125" y2="25" stroke="rgba(120,90,60,0.2)" stroke-width="0.5"/>
-                <line x1="155" y1="25" x2="280" y2="25" stroke="rgba(120,90,60,0.2)" stroke-width="0.5"/>
-            </svg>
-
-            <div class="wi__photo-placeholder" aria-label="Фото жениха и невесты">
-                <i class="ti ti-camera" aria-hidden="true"></i>
-            </div>
-
-            <p class="wi__label">Той иелері</p>
-
-            <div class="wi__names">
-                Айдын – Гульнур
-            </div>
-
-            <div class="wi__divider">
-                <span class="wi__divider-line"></span>
-                <i class="ti ti-heart wi__heart" aria-hidden="true"></i>
-                <span class="wi__divider-line"></span>
-            </div>
-
-            <div class="wi__body">
-                БАЛАЛАРЫҢЫЗҒА<br>
-                САРКЫТ<br>
-                АПАРУЛАРЫҢЫЗҒА<br>
-                БОЛАДЫ!
-            </div>
-
-            <div class="wi__divider">
-                <span class="wi__divider-line"></span>
-                <i class="ti ti-heart wi__heart" aria-hidden="true"></i>
-                <span class="wi__divider-line"></span>
-            </div>
-
-            <div class="wi__body" style="font-size: clamp(16px,4vw,20px); font-style: italic; color: #3d2b1a; text-transform: none; letter-spacing: 0; line-height: 1.6;">
-                Тойға қатысуыңызды<br>растауыңызды сұраймыз!
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         РАЗДЕЛ 7: ФОРМА RSVP (ПОДТВЕРЖДЕНИЕ) - КОНЕЦ
-         Файл: wedding_block2_with_count.html (.wi2)
-         
-         📤 ҚАЙДАҒА ЖІБЕРІЛЕДІ: Осы деректер бөлек серверге жіберіліп,
-            қалыс ешқай бағаланбайды — тек той іскерлігі үшін.
-            TODO я сделаю бэкенд на джанго куда и будет поступать эта форма, а пока что просто логирую в консоль.
-         ============================================================ -->
-    <section id="rsvp" class="wi2">
-        <div class="wi2__card">
-
-            <div class="wi2__divider">
-                <span class="wi2__divider-line"></span>
-                <i class="ti ti-heart wi2__heart" aria-hidden="true"></i>
-                <span class="wi2__divider-line"></span>
-            </div>
-
-            <div class="wi2__footer-text">
-                Тойға қатысуыңызды<br>растауыңызды сұраймыз!
-            </div>
-
-            <div class="wi2__form">
-
-                <p class="wi2__form-label">
-                    Аты-жөніңізді жазыңыз,<br>
-                    <span>(жубайыңызбен келетін болсаңыз, есімдеріңізді бірге жазуды өтінеміз)</span>
-                </p>
-                <input class="wi2__input" type="text" id="wi2-name" placeholder="">
-
-                <p class="wi2__radio-label">Тойға келесіз бе?</p>
-                <div class="wi2__radio-group">
-                    <label class="wi2__radio-item">
+                <fieldset class="rsvp-form__choices">
+                    <legend>Тойға келесіз бе?</legend>
+                    <label>
                         <input type="radio" name="attend" value="Әрине, келемін">
                         <span>Әрине, келемін!</span>
                     </label>
-                    <label class="wi2__radio-item">
-                        <input type="radio" name="attend" value="Жубаймен келемін">
-                        <span>Жубаймен келемін!</span>
+                    <label>
+                        <input type="radio" name="attend" value="Өкінішке орай, келе алмаймын">
+                        <span>Өкінішке орай, келе алмаймын.</span>
                     </label>
-                    <label class="wi2__radio-item">
-                        <input type="radio" name="attend" value="Келе алмаймын">
-                        <span>Өкінішке орай, келе алмаймын</span>
-                    </label>
-                </div>
+                </fieldset>
 
-                <div class="wi2__counter-wrap">
-                    <span class="wi2__counter-label">Қанша адам келеді?</span>
-                    <div class="wi2__counter">
-                        <button class="wi2__counter-btn" onclick="changeCount(-1)" aria-label="Азайту">−</button>
-                        <input class="wi2__counter-num" type="number" id="wi2-count" value="1" min="1" max="20" oninput="validateCount(this)">
-                        <button class="wi2__counter-btn" onclick="changeCount(1)" aria-label="Көбейту">+</button>
+                <div class="rsvp-form__counter">
+                    <span>Қонақ саны</span>
+                    <div class="counter-control">
+                        <button type="button" onclick="changeCount(-1)" aria-label="Қонақ санын азайту">−</button>
+                        <input id="wi2-count" type="number" min="1" max="20" value="1" inputmode="numeric" oninput="validateCount(this)">
+                        <button type="button" onclick="changeCount(1)" aria-label="Қонақ санын көбейту">+</button>
                     </div>
-                    <p class="wi2__counter-hint">Тек бүтін сан енгізіңіз (1–20)</p>
                 </div>
 
-                <div class="wi2__toast" id="wi2-toast"></div>
-                <button class="wi2__btn" onclick="submitForm()">Жауапты жіберу</button>
-            </div>
+                <div class="rsvp-form__toast" id="wi2-toast" role="status" aria-live="polite"></div>
+                <button class="rsvp-form__submit" type="submit">Жауапты жіберу</button>
+            </form>
+        </section>
 
-            <div class="wi2__divider">
-                <span class="wi2__divider-line"></span>
-                <i class="ti ti-heart wi2__heart" aria-hidden="true"></i>
-                <span class="wi2__divider-line"></span>
-            </div>
+        <section id="closing" class="closing-section section-paper" aria-labelledby="closing-title">
+            <h2 id="closing-title" class="section-title">Құрметпен, той иелері:</h2>
+            <p class="closing-section__names">Айдын - Гүлнұр</p>
+            <div class="closing-section__heart" aria-hidden="true"></div>
+        </section>
+    </main>
 
-            <div class="wi2__closing">
-                Қуанышымыздың<br>куәсі болыңыздар!
-            </div>
-
-        </div>
-
-        <div class="wi2__bottom">
-            <img class="wi2__circle" src="assets/ornaments/kazakh-ornament-circle.png" alt="">
-            <img class="wi2__circle" src="assets/ornaments/kazakh-ornament-circle.png" alt="">
-        </div>
-    </section>
-
-    <!-- ============================================================
-         СКРИПТЫ
-         ============================================================ -->
     <script src="js/main.js"></script>
-    <script src="js/timer.js"></script>
     <script src="js/player.js"></script>
     <script src="js/form.js"></script>
-
-    <!-- Инициализация календаря -->
-    <script>
-    (function() {
-        var targetDate = new Date('2026-08-22T15:00:00');
-        var now = new Date();
-
-        var elDays = document.getElementById('hp-days');
-        var elHours = document.getElementById('hp-hours');
-        var elMins = document.getElementById('hp-mins');
-        var elSecs = document.getElementById('hp-secs');
-
-        function padZero(n) {
-            return n < 10 ? '0' + n : '' + n;
-        }
-
-        function updateTimer() {
-            var current = new Date();
-            var diff = targetDate - current;
-            if (diff <= 0) {
-                elDays.textContent = '0';
-                elHours.textContent = '00';
-                elMins.textContent = '00';
-                elSecs.textContent = '00';
-                return;
-            }
-            var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            var secs = Math.floor((diff % (1000 * 60)) / 1000);
-            elDays.textContent = days;
-            elHours.textContent = padZero(hours);
-            elMins.textContent = padZero(mins);
-            elSecs.textContent = padZero(secs);
-        }
-
-        updateTimer();
-        setInterval(updateTimer, 1000);
-
-        /* Генерация календаря на август 2026 */
-        var dayNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
-        var grid = document.getElementById('hp-cal-grid');
-
-        dayNames.forEach(function(d) {
-            var el = document.createElement('div');
-            el.className = 'hp-card__cal-dayname';
-            el.textContent = d;
-            grid.appendChild(el);
-        });
-
-        // Август 2026: 1-е число — суббота (индекс 5 при Пн=0)
-        var firstDayOffset = 5;
-        var totalDays = 31;
-        var weddingDay = 21;
-
-        var todayDay = null;
-        var todayMonth = now.getMonth();
-        var todayYear = now.getFullYear();
-        if (todayYear === 2026 && todayMonth === 7) {
-            todayDay = now.getDate();
-        }
-
-        for (var i = 0; i < firstDayOffset; i++) {
-            var empty = document.createElement('div');
-            empty.className = 'hp-card__cal-day hp-card__cal-day--empty';
-            grid.appendChild(empty);
-        }
-
-        for (var d = 1; d <= totalDays; d++) {
-            var cell = document.createElement('div');
-            cell.className = 'hp-card__cal-day';
-            cell.textContent = d;
-
-            if (d === weddingDay) {
-                cell.classList.add('hp-card__cal-day--active');
-            } else if (d === todayDay) {
-                cell.classList.add('hp-card__cal-day--today');
-            } else if (todayDay !== null && d < todayDay) {
-                cell.classList.add('hp-card__cal-day--past');
-            }
-
-            grid.appendChild(cell);
-        }
-    })();
-    </script>
-
 </body>
 </html>

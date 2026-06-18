@@ -31,6 +31,7 @@ build/
 
 
 # don't used files 
+figma-screenshot.png
 ./old_assets/
 PROJECT_OVERVIEW.md
 

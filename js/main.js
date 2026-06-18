@@ -1,36 +1,44 @@
-/* ============================================================
-   MAIN.JS - Точка входа приложения
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎉 SPA приложение инициализировано');
-    
-    // Инициализация всех компонентов
-    initSections();
-    initNavigation();
+    buildCalendar();
+    initAudioPlayer();
 });
 
-/**
- * Инициализация секций (smooth scroll)
- */
-function initSections() {
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-        console.log(`✓ Секция загружена: ${section.id}`);
+function buildCalendar() {
+    const grid = document.getElementById('calendar-grid');
+    if (!grid) return;
+
+    const weekDays = ['Дс', 'Сс', 'Ср', 'Бс', 'Жм', 'Сб', 'Жс'];
+    const firstDayOffset = 5;
+    const totalDays = 31;
+    const eventDay = 21;
+
+    grid.innerHTML = '';
+
+    weekDays.forEach(function(day) {
+        const cell = document.createElement('div');
+        cell.className = 'calendar-card__cell calendar-card__cell--head';
+        cell.textContent = day;
+        grid.appendChild(cell);
     });
+
+    for (let i = 0; i < firstDayOffset; i += 1) {
+        const cell = document.createElement('div');
+        cell.className = 'calendar-card__cell calendar-card__cell--empty';
+        grid.appendChild(cell);
+    }
+
+    for (let day = 1; day <= totalDays; day += 1) {
+        const cell = document.createElement('div');
+        cell.className = 'calendar-card__cell';
+        if (day === eventDay) {
+            cell.classList.add('calendar-card__cell--event');
+            cell.setAttribute('aria-label', '21 тамыз, той күні');
+        }
+        cell.textContent = day;
+        grid.appendChild(cell);
+    }
 }
 
-/**
- * Инициализация навигации (опционально)
- */
-function initNavigation() {
-    // Можно добавить sticky nav, dots, etc.
-}
-
-/**
- * Функция для плеера (будет вызывать player.js)
- */
 function seekAudio(event) {
     if (typeof handleAudioSeek === 'function') {
         handleAudioSeek(event);

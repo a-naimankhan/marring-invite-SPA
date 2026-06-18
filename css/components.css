@@ -246,6 +246,24 @@
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
+.music-section__play::before,
+.music-section__play::after {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1.5px solid rgba(107, 29, 15, 0.28);
+    border-radius: 50%;
+    transform: scale(0.72);
+    opacity: 0;
+    pointer-events: none;
+    animation: playRipple 2.7s ease-out infinite;
+}
+
+.music-section__play::after {
+    animation-delay: 1.15s;
+    border-color: rgba(107, 29, 15, 0.18);
+}
+
 .music-section__play:hover {
     transform: scale(1.05);
     opacity: 0.78;
@@ -819,6 +837,20 @@
     }
     72%, 100% {
         transform: translateX(520%) skewX(-22deg);
+        opacity: 0;
+    }
+}
+
+@keyframes playRipple {
+    0% {
+        transform: scale(0.68);
+        opacity: 0;
+    }
+    18% {
+        opacity: 0.62;
+    }
+    72%, 100% {
+        transform: scale(1.45);
         opacity: 0;
     }
 }

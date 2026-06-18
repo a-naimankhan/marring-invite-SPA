@@ -48,8 +48,8 @@ function seekAudio(event) {
 
 function initAutoScroll() {
     const root = document.documentElement;
-    const speed = 0.18;
-    const startDelay = 1800;
+    const speed = 0.11;
+    const startDelay = 1100;
     const resumeDelay = 5500;
     let enabled = false;
     let pausedUntil = Date.now() + startDelay;

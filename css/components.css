@@ -713,6 +713,8 @@
 }
 
 .rsvp-form__submit {
+    position: relative;
+    overflow: hidden;
     width: 100%;
     min-height: 52px;
     border: 0;
@@ -728,6 +730,26 @@
 .rsvp-form__submit:hover {
     background: var(--brown-2);
     transform: translateY(-1px);
+}
+
+.rsvp-form__submit::before {
+    content: "";
+    position: absolute;
+    top: -35%;
+    bottom: -35%;
+    left: -45%;
+    width: 34%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.18),
+        rgba(255, 255, 255, 0.72),
+        rgba(255, 255, 255, 0.18),
+        transparent
+    );
+    transform: translateX(-120%) skewX(-22deg);
+    animation: submitLightSweep 2.8s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .closing-section {
@@ -784,6 +806,20 @@
     50% {
         transform: translateY(7px);
         opacity: 0.62;
+    }
+}
+
+@keyframes submitLightSweep {
+    0%, 42% {
+        transform: translateX(-140%) skewX(-22deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    72%, 100% {
+        transform: translateX(520%) skewX(-22deg);
+        opacity: 0;
     }
 }
 

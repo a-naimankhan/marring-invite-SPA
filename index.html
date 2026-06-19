@@ -27,6 +27,15 @@
             <button class="music-section__play" type="button" onclick="toggleAudio()" aria-label="Музыканы қосу немесе тоқтату">
                 <span class="music-section__play-icon" aria-hidden="true"></span>
             </button>
+            <div class="music-section__progress-wrap">
+                <div class="music-section__progress" id="mp-progress" onclick="seekAudio(event)" aria-label="Музыка прогресі">
+                    <div class="music-section__progress-fill" id="mp-fill"></div>
+                </div>
+                <div class="music-section__times">
+                    <span id="mp-cur">0:00</span>
+                    <span id="mp-dur">0:00</span>
+                </div>
+            </div>
             <div class="music-section__curve" aria-hidden="true"></div>
 
             <audio id="wedding-audio" preload="metadata">

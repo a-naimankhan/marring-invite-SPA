@@ -125,7 +125,12 @@
             <div class="sparkles" aria-hidden="true"></div>
             <h2 id="rsvp-title" class="section-title">Тойға қатысуыңызды растауыңызды сұраймыз!</h2>
 
-            <form class="rsvp-form" onsubmit="submitForm(event)" novalidate>
+            <form class="rsvp-form" name="wedding-rsvp" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="submitForm(event)" novalidate>
+                <input type="hidden" name="form-name" value="wedding-rsvp">
+                <input type="hidden" name="submittedAt" id="wi2-submitted-at" value="">
+                <p class="rsvp-form__bot-field" aria-hidden="true">
+                    <label>Do not fill this field: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                </p>
                 <label class="rsvp-form__label" for="wi2-name">
                     Аты-жөніңізді жазыңыз:
                     <span>(жұбайыңызбен келетін болсаңыз, есімдеріңізді бірге жазуды өтінеміз)</span>
@@ -152,7 +157,7 @@
                     <span>Қонақ саны</span>
                     <div class="counter-control">
                         <button type="button" onclick="changeCount(-1)" aria-label="Қонақ санын азайту">−</button>
-                        <input id="wi2-count" type="number" min="1" max="20" value="1" inputmode="numeric" oninput="validateCount(this)">
+                        <input id="wi2-count" name="numberOfPeople" type="number" min="0" max="20" value="1" inputmode="numeric" oninput="validateCount(this)">
                         <button type="button" onclick="changeCount(1)" aria-label="Қонақ санын көбейту">+</button>
                     </div>
                 </div>

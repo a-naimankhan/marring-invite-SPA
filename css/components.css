@@ -348,6 +348,13 @@
     line-height: 1.45;
 }
 
+.message-section__name {
+    position: relative;
+    font-family: var(--font-hand);
+    font-size: 25px;
+    line-height: 1.1;
+}
+
 .message-section__scribble {
     position: relative;
     z-index: 1;

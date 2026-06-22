@@ -238,12 +238,14 @@
 
 .music-section__play-icon {
     display: block;
-    width: 0;
-    height: 0;
-    margin-left: 5px;
-    border-top: 17px solid transparent;
+    /* width: 0;
+    height: 0; */
+    font-size: 32px;
+    color : #050302;
+    /* margin-left: 5px; */
+    /* border-top: 17px solid transparent;
     border-bottom: 17px solid transparent;
-    border-left: 27px solid #050302;
+    border-left: 27px solid #050302; */
 }
 
 .music-section__progress-wrap {
@@ -335,7 +337,7 @@
     z-index: 1;
     width: 42px;
     height: auto;
-    margin: 0 auto -1px 45px;
+    margin: 0 auto -1px -5px;
     pointer-events: none;
 }
 

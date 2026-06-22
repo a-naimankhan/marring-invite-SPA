@@ -24,9 +24,11 @@
             <img class="music-section__image" src="assets/images/gromophone.png" alt="Музыкалық ойнатқыш">
             
             <p class="music-section__hint">Әуенді қосу үшін, батырманы басыңыз</p>
-            <button class="music-section__play" type="button" onclick="toggleAudio()" aria-label="Музыканы қосу немесе тоқтату">
-                <span class="music-section__play-icon" aria-hidden="true"></span>
-            </button>
+                <button class="music-section__play" type="button" onclick="toggleAudio()" aria-label="Музыканы қосу немесе тоқтату">
+            <svg class="music-section__play-icon" style="transform: translateX(2px);" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5.1432C8 4.21207 9.01423 3.63665 9.81172 4.11514L20.3547 10.441C21.1343 10.9088 21.1343 12.0393 20.3547 12.5071L9.81172 18.8329C9.01423 19.3114 8 18.736 8 17.8048V5.1432Z" />
+            </svg>
+                </button>
             <div class="music-section__progress-wrap">
                 <div class="music-section__progress" id="mp-progress" onclick="seekAudio(event)" aria-label="Музыка прогресі">
                     <div class="music-section__progress-fill" id="mp-fill"></div>

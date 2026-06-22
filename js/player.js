@@ -51,7 +51,22 @@ function updatePlayButton() {
     const player = document.querySelector('[data-player]');
     if (!button) return;
 
-    button.innerHTML = '<span class="music-section__play-icon" aria-hidden="true"></span>';
+    if (isPlaying) {
+        button.innerHTML = `
+            <svg class="music-section__play-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="4" width="4" height="16" rx="1.5" />
+                <rect x="14" y="4" width="4" height="16" rx="1.5" />
+            </svg>
+        `;
+    } else {
+        button.innerHTML = `
+            <svg class="music-section__play-icon" style="transform: translateX(2px);" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5.1432C8 4.21207 9.01423 3.63665 9.81172 4.11514L20.3547 10.441C21.1343 10.9088 21.1343 12.0393 20.3547 12.5071L9.81172 18.8329C9.01423 19.3114 8 18.736 8 17.8048V5.1432Z" />
+            </svg>
+        `;
+    }
+
+    // button.innerHTML = '<span class="music-section__play-icon" aria-hidden="true"></span>';
     button.setAttribute('aria-label', isPlaying ? 'Музыканы тоқтату' : 'Музыканы қосу');
 
     if (player) {
